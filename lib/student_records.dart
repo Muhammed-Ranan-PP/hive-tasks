@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart'; 
+import 'package:practice_hive/student_list.dart';
 
 class StudentRecords extends StatefulWidget {
   const StudentRecords({super.key});
@@ -10,7 +11,6 @@ class StudentRecords extends StatefulWidget {
 }
 
 class _StudentRecordsState extends State<StudentRecords> {
-  Map? student;
   final box = Hive.box('student');
   final nameController = TextEditingController();
   final ageController = TextEditingController();
@@ -41,13 +41,7 @@ class _StudentRecordsState extends State<StudentRecords> {
              final name = nameController.text.toString();
              final age = int.parse(ageController.text);
              final domain = domainController.text.toString();
-             box.put(1, {
-              "name" : name,
-              "age":age,
-              "domain":domain
-             });
-             final student = box.get(1);
-             print(student);
+             
             }, child: Text("Save"))
             ]
             ),
